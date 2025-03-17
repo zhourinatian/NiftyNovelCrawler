@@ -1,0 +1,5 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2025/03/18 05:00 CST
+
+beautifulsoup4==4.12.2
+requests==2.31.0
