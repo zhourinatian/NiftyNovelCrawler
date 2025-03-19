@@ -1,5 +1,5 @@
 from utils.nifty_novel import get_novel_info, get_chapter_content
-import os
+import os, re
 from bs4 import BeautifulSoup
 
 # 从用户输入获取URL
@@ -24,6 +24,9 @@ if novel_info:
     novel_date = novel_info["novel_date"]
     novel_update = novel_info["novel_update"]
     chapters = novel_info["chapters"]
+
+    # 替换文件名中的非法字符
+    novel_name = re.sub(r'[<>:"/\\|?*]', '_', novel_name)
 
     # 构建文件路径
     file_extension = "html" if save_format == "2" else "txt"
