@@ -14,7 +14,7 @@ if save_format not in ["1", "2"]:
 
 while True:
     # 从用户输入获取URL
-    url = input("请输入小说网址 ( 按q键 或 输入 exit 退出）： ").strip()
+    url = input("请输入小说网址 ( 输入 q 或 exit 退出）： ").strip()
     if url.lower() in ['q', 'exit']:
         break
 
