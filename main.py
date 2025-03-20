@@ -3,13 +3,13 @@ import os, re
 from bs4 import BeautifulSoup
 
 # 从用户输入获取URL
-url = input("请输入小说URL: ")
+url = input("Please enter the novel URL: ")
 
 # 让用户选择保存格式
-print("请选择保存格式:")
-print("1. TXT (默认)")
+print("Please choose the save format:")
+print("1. TXT (default)")
 print("2. HTML")
-save_format = input("输入选项 (1 或 2): ").strip()
+save_format = input("Enter option (1 or 2): ").strip()
 
 # 如果用户输入无效选项，默认保存为TXT
 if save_format not in ["1", "2"]:
@@ -33,21 +33,8 @@ if novel_info:
     file_path = os.path.join("downloads", f"{novel_name}.{file_extension}")
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-    # 写入小说信息和章节内容到文件
+    # 写入章节内容到文件
     with open(file_path, "w", encoding="utf-8") as file:
-        if save_format == "2":
-            file.write(f"<h1>{novel_name}</h1>\n")
-            file.write(f"<h2>作者: {novel_author}</h2>\n")
-            file.write(f"<p>发表日期: {novel_date}</p>\n")
-            file.write(f"<p>更新日期: {novel_update}</p>\n")
-            file.write("<h3>章节内容:</h3>\n")
-        else:
-            file.write(f"小说名称: {novel_name}\n")
-            file.write(f"作者: {novel_author}\n")
-            file.write(f"发表日期: {novel_date}\n")
-            file.write(f"更新日期: {novel_update}\n")
-            file.write("章节内容:\n")
-
         for chapter in chapters:
             content = get_chapter_content(base_url, chapter)
             if save_format == "2":
@@ -59,4 +46,4 @@ if novel_info:
                 file.write(f"{text_content}\n")
                 file.write("="*50 + "\n")
 
-    print(f"小说已保存到: {file_path}")
+    print(f"Novel saved to: {file_path}")
